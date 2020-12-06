@@ -2,6 +2,12 @@
   (:require [clojure.java.io :as io]
             [clojure.pprint :refer (pprint)]))
 
+(defmacro inspect
+  [form]
+  `(let [result# ~form]
+     (prn (quote ~form) "is" result#)
+     result#))
+
 (defn -main
   [input-file day problem]
   (let [ns-sym (symbol (str "advent-of-code-2020." day))]
